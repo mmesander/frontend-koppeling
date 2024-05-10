@@ -58,9 +58,10 @@ function AuthContextProvider({children}) {
         logout: logout,
     }
 
+    // Hier de methode aangepast met de juiste link, de id is de naam (username)
     async function fetchUserData(id, token, redirectUrl) {
         try {
-            const response = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/user`, {
+            const response = await axios.get(`http://localhost:8085/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,

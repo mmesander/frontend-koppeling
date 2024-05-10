@@ -32,19 +32,19 @@ function SignUp() {
     async function handleRegister(data) {
         setLoading(true);
         setErrorMessage("");
+        // Hier de juiste link, de rol verwijderd en de response status toegevoegd als regSucces regel 37, 40/41 en 47
         try {
-            const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup', {
+            const response = await axios.post('http://localhost:8085/users', {
                 username: data.username,
                 email: data.email,
                 password: data.password,
-                role: ["user"]
             });
 
             if (response.data) {
                 setError(false);
             }
 
-            if (response.data.message === "User registered successfully!") {
+            if (response.status === 201) {
                 setRegSuccess(true);
             }
 

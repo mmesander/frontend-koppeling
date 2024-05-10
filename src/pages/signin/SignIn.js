@@ -24,14 +24,15 @@ function SignIn() {
     async function handleLogin(data) {
         setLoading(true);
         setErrorMessage("");
+        // Hier de juiste link gebruikt en de data.jwt aangepast, regel 29, 33 en 35
         try {
-            const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
+            const response = await axios.post('http://localhost:8085/users/authenticate', {
                 username: data.username,
                 password: data.password
             });
-            login(response.data.accessToken);
+            login(response.data.jwt);
 
-            if (response.data.accessToken) {
+            if (response.data.jwt) {
                 setError(false);
             }
 
